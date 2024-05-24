@@ -220,10 +220,23 @@ func main() {
 				}
 			}
 
+			var thumbnail *string
+			if item.Image != nil {
+				if !strings.Contains(item.Image.URL, "http://") && !strings.Contains(item.Image.URL, "https://") {
+					url := feed.Link + item.Image.URL
+					thumbnail = &url
+				} else {
+					thumbnail = &item.Image.URL
+				}
+			} else {
+				thumbnail = nil
+			}
+
 			newItems[i] = entity.Item{
 				Title:       item.Title,
 				Description: item.Description,
 				Link:        item.Link,
+				Thumbnail:   thumbnail,
 				Published:   itemPublished,
 				GUID:        item.GUID,
 				JobTags:     relatedJobTags,
@@ -256,6 +269,7 @@ func main() {
 			i.title as item_title, 
 			i.description as item_description, 
 			i."link" as item_link,
+			i.thumbnail as item_thumbnail,
 	    	i.published as item_published,
 			f."name" as feed_name, 
 			f.title as feed_title, 
