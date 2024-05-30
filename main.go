@@ -271,6 +271,7 @@ func main() {
 			i."link" as item_link,
 			i.thumbnail as item_thumbnail,
 	    	i.published as item_published,
+			f."id" as feed_id,
 			f."name" as feed_name, 
 			f.title as feed_title, 
 			f."link" as feed_link,

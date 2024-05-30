@@ -26,6 +26,7 @@ type ItemView struct {
 	ItemLink        string          `gorm:"column:item_link;type:varchar"`
 	ItemThumbnail   *string         `gorm:"column:item_thumbnail;type:varchar"`
 	ItemPublished   time.Time       `gorm:"column:item_published;type:timestamp"`
+	FeedID          uint            `gorm:"column:feed_id;type:varchar"`
 	FeedName        string          `gorm:"column:feed_name;type:varchar"`
 	FeedTitle       string          `gorm:"column:feed_title;type:varchar"`
 	FeedLink        string          `gorm:"column:feed_link;type:varchar"`
